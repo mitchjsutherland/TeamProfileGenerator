@@ -68,17 +68,14 @@ function buildTeam() {
                 {
                     name: 'Add an engineer', 
                     value: 'Engineer',
-                    // short:
                 },
                 {
                     name:  'Add an intern',
                     value: 'Intern',
-                    // short:
                 },
                 {
                     name: 'Finish building the team',
                     value: 'Finish',
-                    // short:
                 }
             ],
         },
@@ -126,7 +123,8 @@ async function menuSelect() {
         ];
 
         let addEngineer = await inquirer.prompt(newEngineer);
-        employees.push(addEngineer);
+        await employees.push(addEngineer);
+        menuSelect();
         // console.log(employees);
         
 
@@ -156,7 +154,8 @@ async function menuSelect() {
         ];
     
         let addIntern = await inquirer.prompt(newIntern);
-        employees.push(addIntern);
+        await employees.push(addIntern);
+        menuSelect();
 
     } else {
         // User is finished building team
