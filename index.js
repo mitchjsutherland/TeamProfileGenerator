@@ -52,7 +52,7 @@ function buildTeam() {
     let mainMenu = [
         {
             type: 'list',
-            name: 'menu',
+            name: 'selection',
             message: "What would you like to do?",
             choices: [
                 {
@@ -88,19 +88,18 @@ function buildTeam() {
 
 
 async function menuSelect() {
-    let selection = await buildTeam();
-    console.log(selection.value);
+    let menu = await buildTeam();
 
-    // if (selection === 'Engineer') {
-    //     console.log("Let's add an Engineer:")
+    if (menu.selection === 'Engineer') {
+        console.log("Let's add an Engineer:")
 
-    // } else if (selection === 'Intern') {
-    //     console.log("Let's add an Intern:")
+    } else if (menu.selection === 'Intern') {
+        console.log("Let's add an Intern:")
 
-    // } else {
-    //     // User is finished building team
-    //     console.log("Your team is complete!")
-    // };
+    } else {
+        // User is finished building team
+        console.log("Your team is complete!")
+    };
 };
 
 
