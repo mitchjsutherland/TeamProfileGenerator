@@ -50,9 +50,10 @@ async function startApp() {
     ];
 
     teamManagerData = await inquirer.prompt(teamManager);
-    await employees.push(teamManagerData);
+    addManager = new Manager(teamManagerData.name, teamManagerData.id, teamManagerData.email, teamManagerData.office);
+    await employees.push(addManager);
 
-    // console.log(teamManagerData.id)
+    console.log(addManager.id);
 };
 
 
@@ -115,11 +116,11 @@ async function menuSelect() {
             }
         ];
 
-        let addEngineer = await inquirer.prompt(newEngineer);
+        let engineerData = await inquirer.prompt(newEngineer);
+        let addEngineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
         await employees.push(addEngineer);
         menuSelect();
-        // console.log(employees);
-        
+    
 
     } else if (menu.selection === 'Intern') {
         console.log("Let's add an Intern:")
@@ -146,7 +147,8 @@ async function menuSelect() {
             }
         ];
     
-        let addIntern = await inquirer.prompt(newIntern);
+        let internData = await inquirer.prompt(newIntern);
+        let addIntern = new Intern(internData.name, internData.id, internData.email, internData.school);
         await employees.push(addIntern);
         menuSelect();
 
@@ -156,31 +158,30 @@ async function menuSelect() {
         console.log(`Congratulations on building your team ${teamManagerData.name}`)
         console.log("Your new team now features...");
         console.log("-----------------------");
-        console.log(employees);
-        // employees.forEach(employee => {
-        //     console.log(employee);
-        // });
+        // console.log(employees);
+        employees.forEach(employee => {
+            console.log(employee.name);
+        });
 
         // Write to HTML FILE
-        renderHTML(employees);
+        // renderHTML(employees);
     };
 };
 
 // MOVE TO GLOBAL
-let renderedTeam;
+// let renderedTeam;
 
-function renderHTML(employeelist) {
-    renderedTeam = render(employeelist);
-    // return renderedTeam;
-    console.log(renderedTeam);
-};
+// function renderHTML(employeelist) {
+//     renderedTeam = render(employeelist);
+//     // return renderedTeam;
+//     console.log(renderedTeam);
+// };
 
 // async function createHTML() {
 //     // let content = employees;
 //     await fs.writeFile('SampleHTML.html', render, (error) =>
 //     error ? console.error(error) : console.log('Success! Your read me has been saved.'))
 // }
-
 
 
 // Start application --------*
