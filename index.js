@@ -14,36 +14,38 @@ const render = require("./starter/src/page-template.js");
 
 const employees = [];
 
-// Use inquirer format
 
-// function startApp() {
+// Initialise the application ---------------------------------*
 
-//     let teamManagerInfo = [
-//         {
-//             type: 'input',
-//             name: 'name',
-//             message: "Enter your Team Manager's name:",
-//         },
-//         {
-//             type: 'input',
-//             name: 'ID',
-//             message: "Enter your Team Manager's employee ID:",
-//         },
-//         {
-//             type: 'input',
-//             name: 'email',
-//             message: "Enter your Team Manager's email:",
-//         },
-//         {
-//             type: 'input',
-//             name: 'office',
-//             message: "Enter your Team Manager's office number",
-//         }
-//     ];
+function startApp() {
 
-//     // return inquirer.prompt(teamManagerInfo);
-// };
+    let teamManager = [
+        {
+            type: 'input',
+            name: 'name',
+            message: "Please enter the Team Manager's name:",
+        },
+        {
+            type: 'input',
+            name: 'ID',
+            message: "Please enter the Team Manager's employee ID:",
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Please enter the Team Manager's email:",
+        },
+        {
+            type: 'input',
+            name: 'office',
+            message: "Please enter the Team Manager's office number",
+        }
+    ];
 
+    return inquirer.prompt(teamManager);
+};
+
+// Present main menu options ---------------------------------*
 
 function buildTeam() {
 
@@ -55,17 +57,17 @@ function buildTeam() {
             choices: [
                 {
                     name: 'Add an engineer', 
-                    value: 'New engineer',
+                    value: 'Engineer',
                     // short:
                 },
                 {
                     name:  'Add an intern',
-                    value: 'New engineer',
+                    value: 'Intern',
                     // short:
                 },
                 {
                     name: 'Finish building the team',
-                    value: 'Team complete',
+                    value: 'Finish',
                     // short:
                 }
             ],
@@ -77,11 +79,34 @@ function buildTeam() {
 };
 
 
-async function showSelection() {
+// async function showSelection() {
+//     let selection = await buildTeam();
+//     console.log(selection);
+// }
+
+// showSelection();
+
+
+async function menuSelect() {
     let selection = await buildTeam();
-    console.log(selection);
+    console.log(selection.value);
+
+    // if (selection === 'Engineer') {
+    //     console.log("Let's add an Engineer:")
+
+    // } else if (selection === 'Intern') {
+    //     console.log("Let's add an Intern:")
+
+    // } else {
+    //     // User is finished building team
+    //     console.log("Your team is complete!")
+    // };
+};
+
+
+async function main() {
+    await startApp();
+    menuSelect();
 }
 
-
-showSelection();
-
+main();
