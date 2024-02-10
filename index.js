@@ -18,6 +18,7 @@ const employee = require("./starter/lib/Employee.js");
 
 let teamManagerData;
 const employees = [];
+let renderedTeam;
 
 // GENERAL FUNCTIONS ------------------------------------------------------------*
 
@@ -164,18 +165,16 @@ async function menuSelect() {
         });
 
         // Write to HTML FILE
-        // renderHTML(employees);
+        renderHTML(employees);
     };
 };
 
-// MOVE TO GLOBAL
-// let renderedTeam;
 
-// function renderHTML(employeelist) {
-//     renderedTeam = render(employeelist);
-//     // return renderedTeam;
-//     console.log(renderedTeam);
-// };
+function renderHTML(employeelist) {
+    renderedTeam = render(employeelist);
+    return renderedTeam;
+    // console.log(renderedTeam);
+};
 
 // async function createHTML() {
 //     // let content = employees;
