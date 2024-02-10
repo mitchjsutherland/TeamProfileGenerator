@@ -121,11 +121,14 @@ async function menuSelect() {
             {
                 type: 'input',
                 name: 'github',
-                message: "Please enter the Engineer's GitHub usernam:",
+                message: "Please enter the Engineer's GitHub username:",
             }
         ];
 
-        return inquirer.prompt(newEngineer);
+        let addEngineer = await inquirer.prompt(newEngineer);
+        employees.push(addEngineer);
+        // console.log(employees);
+        
 
     } else if (menu.selection === 'Intern') {
         console.log("Let's add an Intern:")
@@ -152,7 +155,8 @@ async function menuSelect() {
             }
         ];
     
-        return inquirer.prompt(newIntern);
+        let addIntern = await inquirer.prompt(newIntern);
+        employees.push(addIntern);
 
     } else {
         // User is finished building team
