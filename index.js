@@ -50,6 +50,7 @@ async function startApp() {
     ];
 
     teamManagerData = await inquirer.prompt(teamManager);
+    await employees.push(teamManagerData);
 
     // console.log(teamManagerData.id)
 };
