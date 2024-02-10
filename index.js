@@ -86,14 +86,6 @@ function buildTeam() {
 };
 
 
-// async function showSelection() {
-//     let selection = await buildTeam();
-//     console.log(selection);
-// }
-
-// showSelection();
-
-
 async function menuSelect() {
     let menu = await buildTeam();
 
@@ -159,7 +151,11 @@ async function menuSelect() {
 
     } else {
         // User is finished building team
-        console.log("Your team is complete!")
+        console.log("Your team is complete!");
+        console.log(`Congratulations on building your team ${teamManagerData.name}`)
+        console.log("Your new team now features...");
+        console.log("-----------------------");
+        console.log(employees);
     };
 
 };
