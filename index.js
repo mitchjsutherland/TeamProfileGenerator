@@ -12,12 +12,19 @@ const render = require("./starter/src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
+
+// GLOBAL VARIABLES ------------------------------------------------------------*
+
+let teamManagerData;
 const employees = [];
 
 
-// Initialise the application ---------------------------------*
+// GENERAL FUNCTIONS ------------------------------------------------------------*
 
-function startApp() {
+
+// Initialise the application --------*
+
+async function startApp() {
 
     let teamManager = [
         {
@@ -27,7 +34,7 @@ function startApp() {
         },
         {
             type: 'input',
-            name: 'ID',
+            name: 'id',
             message: "Please enter the Team Manager's employee ID:",
         },
         {
@@ -42,10 +49,13 @@ function startApp() {
         }
     ];
 
-    return inquirer.prompt(teamManager);
+    teamManagerData = await inquirer.prompt(teamManager);
+
+    // console.log(teamManagerData.id)
 };
 
-// Present main menu options ---------------------------------*
+
+// Present main menu options --------*
 
 function buildTeam() {
 
@@ -92,14 +102,63 @@ async function menuSelect() {
 
     if (menu.selection === 'Engineer') {
         console.log("Let's add an Engineer:")
+        let newEngineer = [
+            {
+                type: 'input',
+                name: 'name',
+                message: "Please enter the Engineer's name:",
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: "Please enter the Engineers's employee ID:",
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: "Please enter the Engineer's email:",
+            },
+            {
+                type: 'input',
+                name: 'github',
+                message: "Please enter the Engineer's GitHub usernam:",
+            }
+        ];
+
+        return inquirer.prompt(newEngineer);
 
     } else if (menu.selection === 'Intern') {
         console.log("Let's add an Intern:")
+        let newIntern = [
+            {
+                type: 'input',
+                name: 'name',
+                message: "Please enter the Intern's name:",
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: "Please enter the Intern's employee ID:",
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: "Please enter the Intern's email:",
+            },
+            {
+                type: 'input',
+                name: 'github',
+                message: "Please enter the Intern's school:",
+            }
+        ];
+    
+        return inquirer.prompt(newIntern);
 
     } else {
         // User is finished building team
         console.log("Your team is complete!")
     };
+
 };
 
 
