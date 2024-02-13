@@ -18,7 +18,7 @@ const employee = require("./starter/lib/Employee.js");
 
 let teamManagerData;
 const employees = [];
-let renderedTeam;
+let teamOutput;
 
 // GENERAL FUNCTIONS ------------------------------------------------------------*
 
@@ -54,7 +54,6 @@ async function startApp() {
     addManager = new Manager(teamManagerData.name, teamManagerData.id, teamManagerData.email, teamManagerData.office);
     await employees.push(addManager);
 
-    console.log(addManager.id);
 };
 
 
@@ -170,16 +169,15 @@ async function menuSelect() {
 };
 
 
-function renderHTML(employeelist) {
-    renderedTeam = render(employeelist);
-    return renderedTeam;
-    // console.log(renderedTeam);
+function renderHTML(stafflist) {
+    teamOutput = render(stafflist);
+    // return teamOutput;
+    console.log(teamOutput);
 };
 
-// async function createHTML() {
-//     // let content = employees;
-//     await fs.writeFile('SampleHTML.html', render, (error) =>
-//     error ? console.error(error) : console.log('Success! Your read me has been saved.'))
+// function createHTML() {
+//     fs.writeFileSync(outputPath, teamOutput, (error) =>
+//     error ? console.error(error) : console.log('Success! Your team is now viewable.'))
 // }
 
 
