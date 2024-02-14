@@ -18,7 +18,6 @@ const employee = require("./starter/lib/Employee.js");
 
 let teamManagerData;
 const employees = [];
-let teamOutput;
 
 // GENERAL FUNCTIONS ------------------------------------------------------------*
 
@@ -164,16 +163,17 @@ async function menuSelect() {
         });
 
         // Write to HTML FILE
-        renderHTML(employees);
+        writeHTML(render(employees));
     };
 };
 
 
-function renderHTML(stafflist) {
-    teamOutput = render(stafflist);
-    // return teamOutput;
-    console.log(teamOutput);
-};
+// function renderHTML(stafflist) {
+
+//     // let teamOutput = render(stafflist);
+//     // return teamOutput;
+//     // console.log(teamOutput);
+// };
 
 // function createHTML() {
 //     fs.writeFileSync(outputPath, teamOutput, (error) =>
@@ -181,12 +181,20 @@ function renderHTML(stafflist) {
 // }
 
 
+function writeHTML(html) {
+    if(fs.existsSync(OUTPUT_DIR)) {
+        fs.writeFileSync(outputPath, html)
+    } else {
+        fs.mkdirSync(OUTPUT_DIR);
+        fs.writeFileSync(outputPath, html)
+    }
+};
+
 // Start application --------*
 
 async function main() {
     await startApp();
     await menuSelect();
-    // createHTML();
-}
+};
 
 main();
